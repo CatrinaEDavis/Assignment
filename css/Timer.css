@@ -1,5 +1,6 @@
 .wrapper { 
 	margin: 0 auto; 
+	max-width: 600px;
 }
 
 body {
@@ -24,3 +25,8 @@ body {
 
 button { padding: 10px 20px; border: none; border-bottom: solid 3px #dedede; }
 button:hover { background: #dedede; cursor: pointer; }
+
+@media only screen and (min-width: 600px) {
+    #time { float: left; }
+    #controls {	float: right; margin-top: 215px; }
+}

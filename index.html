@@ -5,25 +5,30 @@
 	        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	        <title>Awesome Stop Watch</title>
 	        <meta name="description" content="Test">
-	        <link rel="stylesheet" href="Timer.css">
+	        <link rel="stylesheet" href="css/Timer.css">
 	</head>
 <body>
 	<div class="wrapper">
-	<div id="time">
-	    <span id="hours">00</span> :
-	    <span id="minutes">00</span> :
-	    <span id="seconds">00</span> ::
-	    <span id="milliseconds">000</span>
+			
+		<div id="time">
+			<div class="display">
+			    <span id="hours">00</span> :
+			    <span id="minutes">00</span> :
+			    <span id="seconds">00</span> ::
+			    <span id="milliseconds">000</span>
+		    </div>
+		</div>
+
+		<div id="controls">
+		    <button id="start">Start</button>
+		    <button id="end">End</button>
+		    <button id="reset">Reset</button>
+		</div>
+
 	</div>
-	<div id="controls">
-	    <button id="start">Start</button>
-	    <button id="end">End</button>
-	    <button id="reset">Reset</button>
-	</div>
-</div>
 
         <!-- Scripts -->
-        <script src="jquery.js"></script>
-        <script src="timer.js"></script>
+        <script src="scripts/jquery.js"></script>
+        <script src="scripts/timer.js"></script>
 </body>
 </html>
