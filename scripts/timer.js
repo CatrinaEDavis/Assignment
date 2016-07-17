@@ -1,42 +1,21 @@
+function init_call(valuetype, value){
+    console.log('calling: ' + valuetype + ' value: ' + value);
 
-jQuery.ajax
-  ({
-    type: "POST",
-    url: "https://demo.calendar42.com/api/v2/events/",
-    headers: {
-        "Accept": "application/json", "Content-type": "application/json", "add Access-Control-Allow-Origin": "https://demo.calendar42.com/api/v2/events/", "Authorization": "Token {{82044f406e4cab221b6e89a457388fd5314f35f9}}", 
-    },
-    dataType: "json",
-    data: {"event_type": "normal", "title": "My tracked time", "start": "2016-02-16T15:00:00Z", "start_timezone": "Europe/Amsterdam", "end": "2016-06-16T18:00:00Z", "end_timezone": "Europe/Amsterdam", "rsvp_status": "attending", "user id": "f8edc3b217c42e506e964b9aad3ed4", "service id": "17c9ba1cf4f2c425173cf8c13ffc271d0772b2b7" } ,
-    success: function(){
-    alert('success');
-  },
-    error:function(error){ 
-        console.log('errorMSG' + JSON.stringify(error));
-    }
+    jQuery.ajax
+      ({
+        type: "POST",
+        url: "https://demo.calendar42.com/api/v2/events/",
+        headers: {
+            "Accept": "application/json", "Content-type": "application/json", "add Access-Control-Allow-Origin": "https://demo.calendar42.com/api/v2/events/", "Authorization": "Token {{82044f406e4cab221b6e89a457388fd5314f35f9}}", 
+        },
+        dataType: "json",
+        data: {"event_type": "normal", "title": "My tracked time", "start": "2016-02-16T15:00:00Z", "start_timezone": "Europe/Amsterdam", "end": "2016-06-16T18:00:00Z", "end_timezone": "Europe/Amsterdam", "rsvp_status": "attending", "user id": "f8edc3b217c42e506e964b9aad3ed4", "service id": "17c9ba1cf4f2c425173cf8c13ffc271d0772b2b7" } ,
+        success: function(){
+        alert('success');
+      },
 
-});
-
-
-/*
-jQuery.ajax
-  ({
-    type: "POST",
-    url: "https://demo.calendar42.com/api/v2/events/",
-
-    dataType: "jsonp",
-    data: {"event_type": "normal", "title": "My tracked time", "start": "2016-02-16T15:00:00Z", "start_timezone": "Europe/Amsterdam", "end": "2016-06-16T18:00:00Z", "end_timezone": "Europe/Amsterdam", "rsvp_status": "attending", "user id": "f8edc3b217c42e506e964b9aad3ed4", "service id": "17c9ba1cf4f2c425173cf8c13ffc271d0772b2b7" } ,
-
-    success: function (data) {
-        console.log(data);
-    },
-    error:function(error){ 
-        console.log('errorMSG' + JSON.stringify(error));
-    }
-});
-
-*/
-
+    });
+}
 
 
 jQuery(function() {
@@ -51,15 +30,17 @@ jQuery(function() {
         if(jQuery(this).text() == "Start"){  // check button label
             jQuery(this).html("<span class='ui-button-text'>Start</span>");
             updateTime(0,0,0,0);
+            init_call('start', jQuery('.display').html());
         }
+
         // End button
         jQuery('#end').click(function(){
-        if(jQuery(this).text() == "End"){
-            clearInterval(timeUpdate);
-            jQuery(this).html("<span class='ui-button-text'>End</span>");
-       }
-           
-    });
+            if(jQuery(this).text() == "End"){
+                clearInterval(timeUpdate);
+                jQuery(this).html("<span class='ui-button-text'>End</span>");
+                init_call('end', jQuery('.display').html());
+            }
+        });
     
     // Reset button onClick
     jQuery('#reset').click(function(){
@@ -102,7 +83,7 @@ jQuery(function() {
         jQuery("#hours").html(prependZero(hours, 2));
         jQuery("#minutes").html(prependZero(minutes, 2));
         jQuery("#seconds").html(prependZero(seconds, 2));
-       jQuery("#milliseconds").html(prependZero(milliseconds, 3));
+        jQuery("#milliseconds").html(prependZero(milliseconds, 3));
     }
     
     // Prepend zeros to the digits in stopwatch
