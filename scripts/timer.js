@@ -1,23 +1,3 @@
-function init_call(valuetype, value){
-    console.log('calling: ' + valuetype + ' value: ' + value);
-
-    jQuery.ajax
-      ({
-        type: "POST",
-        url: "https://demo.calendar42.com/api/v2/events/",
-        headers: {
-            "Accept": "application/json", "Content-type": "application/json", "add Access-Control-Allow-Origin": "https://demo.calendar42.com/api/v2/events/", "Authorization": "Token {{82044f406e4cab221b6e89a457388fd5314f35f9}}", 
-        },
-        dataType: "json",
-        data: {"event_type": "normal", "title": "My tracked time", "start": "2016-02-16T15:00:00Z", "start_timezone": "Europe/Amsterdam", "end": "2016-06-16T18:00:00Z", "end_timezone": "Europe/Amsterdam", "rsvp_status": "attending", "user id": "f8edc3b217c42e506e964b9aad3ed4", "service id": "17c9ba1cf4f2c425173cf8c13ffc271d0772b2b7" } ,
-        success: function(){
-        alert('success');
-      },
-
-    });
-}
-
-
 jQuery(function() {
     
     var hours = minutes = seconds = milliseconds = 0;
@@ -30,16 +10,15 @@ jQuery(function() {
         if(jQuery(this).text() == "Start"){  // check button label
             jQuery(this).html("<span class='ui-button-text'>Start</span>");
             updateTime(0,0,0,0);
-            init_call('start', jQuery('.display').html());
-        }
+            }
 
         // End button
         jQuery('#end').click(function(){
             if(jQuery(this).text() == "End"){
                 clearInterval(timeUpdate);
                 jQuery(this).html("<span class='ui-button-text'>End</span>");
-                init_call('end', jQuery('.display').html());
             }
+
         });
     
     // Reset button onClick
